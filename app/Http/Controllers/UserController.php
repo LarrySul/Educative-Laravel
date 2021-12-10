@@ -18,11 +18,12 @@ class UserController extends Controller
         $request['name'] = '';
         $request['point'] = 'My point';
 
-
         $validator = Validator::make($request->all(), $requestBody);
 
         if ($validator->fails()) {
-            print_r($validator->getMessageBag()->toArray());
+            return $validator->getMessageBag()->toArray();
         }
+
+        return "validation OK";
     }
 }
